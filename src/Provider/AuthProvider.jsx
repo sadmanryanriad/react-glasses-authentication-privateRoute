@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../Config/config";
 import toast from "react-hot-toast";
 
@@ -16,6 +16,11 @@ const AuthProvider = ({children}) => {
     const createUser = (email,password) =>{
         return createUserWithEmailAndPassword(auth, email, password);
     }
+    const handleUpdateProfile = (name,image) =>{
+        updateProfile(auth.currentUser, {
+            displayName: name, photoURL: image
+          })
+    }
     const login = (email,password) =>{
         return signInWithEmailAndPassword(auth,email,password);
     }
@@ -28,6 +33,7 @@ const AuthProvider = ({children}) => {
         user,
         googleLogin,
         createUser,
+        handleUpdateProfile,
         login,
         logout
     }

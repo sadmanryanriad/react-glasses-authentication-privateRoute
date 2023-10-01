@@ -20,7 +20,7 @@ const SocialLogin = () => {
         <>
             <div className="divider">continue with</div>
             <div className="">
-                <button onClick={()=> handleSocialLogin(googleLogin)} className="btn btn-primary btn-circle btn-outline">google</button>
+                <button onClick={()=> handleSocialLogin(googleLogin)} className="btn btn-neutral btn-sm">google</button>
             </div>
         </>
     );

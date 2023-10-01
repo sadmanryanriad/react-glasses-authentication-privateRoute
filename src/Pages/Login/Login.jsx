@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
 import { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import toast from 'react-hot-toast';
 
 const Login = () => {
+
+    const navigate = useNavigate('/');
 
     const {login} = useContext(AuthContext);
 
@@ -19,6 +21,7 @@ const Login = () => {
         login(email,password)
         .then(()=>{
             toast.success('log in successful');
+            navigate('/');
         })
         .catch(error=>{
             console.log(error.message);
