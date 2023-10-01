@@ -1,14 +1,28 @@
 import { Link } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
 
     const handleForm = e =>{
+
+
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const image = e.target.image.value;
         const password = e.target.password.value;
+        console.log(email,password);
+        createUser(email,password)
+        .then(()=>{
+            toast.success('user created successfully!');
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
     }
 
     return (
@@ -47,7 +61,7 @@ const Register = () => {
                                     </label>
                                     <input type="text" placeholder="password" className="input input-bordered" name='password'  />
                                 </div>
-                                <div className="form-control mt-6 p-0">
+                                <div type='submit' className="form-control mt-6 p-0">
                                     <button className="btn btn-neutral">Register</button>
                                 </div>
                                 <label className="label">
