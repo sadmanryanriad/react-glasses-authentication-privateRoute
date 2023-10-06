@@ -6,15 +6,21 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyABEu6L9gkdRdobNvmt0zk4BF6uXGtWx6g",
-  authDomain: "react-glasses-26a1b.firebaseapp.com",
-  projectId: "react-glasses-26a1b",
-  storageBucket: "react-glasses-26a1b.appspot.com",
-  messagingSenderId: "562154708936",
-  appId: "1:562154708936:web:9b745ae5cb778ef11a2afd",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+
+
+// .env                # loaded in all cases
+// .env.local          # loaded in all cases, ignored by git
+// .env.[mode]         # only loaded in specified mode
+// .env.[mode].local   # only loaded in specified mode, ignored by git

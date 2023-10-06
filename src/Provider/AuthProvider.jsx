@@ -46,6 +46,7 @@ const AuthProvider = ({children}) => {
     }
 
     useEffect(()=>{
+        console.log(import.meta.env.VITE_PASS);
         const unSubscribe = onAuthStateChanged(auth,(currentUser)=>{
             console.log('observer', currentUser);
             setUser(currentUser);
